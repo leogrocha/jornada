@@ -15,7 +15,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table
+@Table(name = "tb_depoimentos")
 @ToString
 @EqualsAndHashCode(of = { "idDepoimento" })
 @NoArgsConstructor

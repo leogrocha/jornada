@@ -1,0 +1,2 @@
+insert into tb_depoimentos (foto, depoimento, nome) values ('foto1', 'A jornada foi uma das melhores agências de viagens que eu já experimentei. O serviço ao cliente foi excepcional, e toda a equipe foi muito atenciosa e prestativa.', 'Lauro Mattos');
+insert into tb_depoimentos (foto, depoimento, nome) values ('foto2', 'Quico', 'Chaves');

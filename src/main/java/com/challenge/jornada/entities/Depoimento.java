@@ -17,7 +17,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "tb_depoimentos")
 @ToString
-@EqualsAndHashCode(of = { "idDepoimento" })
+@EqualsAndHashCode(of = { "iddepoimento" })
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -26,7 +26,7 @@ public class Depoimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE) private Long idDepoimento;
+    @Setter(AccessLevel.NONE) private Long iddepoimento;
     @Column(columnDefinition = "TEXT") private String foto;
     @Column(columnDefinition = "TEXT") private String depoimento;
     private String nome;

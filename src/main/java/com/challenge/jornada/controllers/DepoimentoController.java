@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.challenge.jornada.dto.DepoimentoDTO;
 import com.challenge.jornada.services.DepoimentoService;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -37,16 +38,14 @@ public class DepoimentoController {
     }
 
     @PostMapping
-    public ResponseEntity<DepoimentoDTO> insert(@RequestBody DepoimentoDTO depoimentoDTO) {
+    public ResponseEntity<DepoimentoDTO> insert(@Valid @RequestBody DepoimentoDTO depoimentoDTO) {
         depoimentoDTO = service.insert(depoimentoDTO);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand("/{id}").toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand("/{id}").toUri();
         return ResponseEntity.created(uri).body(depoimentoDTO);
     }
 
     @PutMapping("/{iddepoimento}")
-    public ResponseEntity<DepoimentoDTO> update(@PathVariable Long iddepoimento,
-            @RequestBody DepoimentoDTO depoimentoDTO) {
+    public ResponseEntity<DepoimentoDTO> update(@PathVariable Long iddepoimento,@RequestBody DepoimentoDTO depoimentoDTO) {
         service.update(iddepoimento, depoimentoDTO);
         return ResponseEntity.ok(depoimentoDTO);
     }

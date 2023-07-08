@@ -1,3 +1,3 @@
-package com.challenge.jornada.infra.exceptions;
+package com.challenge.jornada.config.exceptions;
 
 public record FieldMessage(String fieldName,String message) {}

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.challenge.jornada.dto.DepoimentoDTO;
 import com.challenge.jornada.entities.Depoimento;
-import com.challenge.jornada.infra.exceptions.ControllerNotFoundException;
+import com.challenge.jornada.config.exceptions.ControllerNotFoundException;
 import com.challenge.jornada.repositories.DepoimentoRepository;
 
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.challenge.jornada.infra.exceptions;
+package com.challenge.jornada.config.exceptions;
 
 public class ControllerNotFoundException extends RuntimeException{
     

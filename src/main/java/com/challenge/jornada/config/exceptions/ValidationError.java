@@ -1,4 +1,4 @@
-package com.challenge.jornada.infra.exceptions;
+package com.challenge.jornada.config.exceptions;
 
 import java.time.Instant;
 import java.util.ArrayList;

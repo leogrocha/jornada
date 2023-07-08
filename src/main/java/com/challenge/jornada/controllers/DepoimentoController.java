@@ -2,7 +2,9 @@ package com.challenge.jornada.controllers;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Set;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,36 +23,41 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/depoimentos")
 @AllArgsConstructor
 public class DepoimentoController {
 
     private DepoimentoService service;
     
-    @GetMapping
+    @GetMapping("/depoimentos")
     public ResponseEntity<List<DepoimentoDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping("/{iddepoimento}")
+    @GetMapping("depoimentos/{iddepoimento}")
     public ResponseEntity<DepoimentoDTO> findById(@PathVariable Long iddepoimento) {
         return ResponseEntity.ok(service.findById(iddepoimento));
     }
 
-    @PostMapping
-    public ResponseEntity<DepoimentoDTO> insert(@Valid @RequestBody DepoimentoDTO depoimentoDTO) {
+    // TODO arrumar o endpoint para que seja depoimentos-home
+    @GetMapping(("/depoimentos-home"))
+    public ResponseEntity<Set<DepoimentoDTO>> findRandom() {
+        return ResponseEntity.ok(service.findRandom());
+    }
+
+    @PostMapping("/depoimentos")
+    public ResponseEntity<DepoimentoDTO> insert(@RequestBody @Valid DepoimentoDTO depoimentoDTO) {
         depoimentoDTO = service.insert(depoimentoDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand("/{id}").toUri();
         return ResponseEntity.created(uri).body(depoimentoDTO);
     }
 
-    @PutMapping("/{iddepoimento}")
+    @PutMapping("depoimentos/{iddepoimento}")
     public ResponseEntity<DepoimentoDTO> update(@PathVariable Long iddepoimento,@RequestBody DepoimentoDTO depoimentoDTO) {
         service.update(iddepoimento, depoimentoDTO);
         return ResponseEntity.ok(depoimentoDTO);
     }
 
-    @DeleteMapping("/{iddepoimento}")
+    @DeleteMapping("depoimentos/{iddepoimento}")
     public ResponseEntity<String> delete(@PathVariable Long iddepoimento) {
         service.delete(iddepoimento);
         return ResponseEntity.noContent().build();

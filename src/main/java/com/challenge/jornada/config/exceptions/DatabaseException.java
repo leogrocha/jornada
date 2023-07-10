@@ -1,4 +1,4 @@
-package com.challenge.jornada.infra.exceptions;
+package com.challenge.jornada.config.exceptions;
 
 public class DatabaseException extends RuntimeException {
     public DatabaseException(String message) {

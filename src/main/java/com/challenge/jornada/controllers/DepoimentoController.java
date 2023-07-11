@@ -55,7 +55,7 @@ public class DepoimentoController {
     }
 
     @DeleteMapping("depoimentos/{iddepoimento}")
-    public ResponseEntity<String> delete(@PathVariable Long iddepoimento) {
+    public ResponseEntity<?> delete(@PathVariable Long iddepoimento) {
         service.delete(iddepoimento);
         return ResponseEntity.noContent().build();
     }

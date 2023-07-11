@@ -11,3 +11,7 @@ insert into tb_depoimentos (foto, depoimento, nome) values ('foto10', 'Jaiminho'
 insert into tb_depoimentos (foto, depoimento, nome) values ('foto11', 'Seu Barriga', 'Seu Barriga');
 insert into tb_depoimentos (foto, depoimento, nome) values ('foto12', 'Ladrão da vila', 'Ladrão da vila');
 insert into tb_depoimentos (foto, depoimento, nome) values ('foto13', '13', '13');
+
+
+insert into tb_destino (foto, nome, preco) values ('foto1', 'Paris', 5000.00);
+insert into tb_destino (foto, nome, preco) values ('terra', 'Guardinha', 5.00);

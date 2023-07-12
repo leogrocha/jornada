@@ -28,7 +28,8 @@ public class Depoimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)  private Long iddepoimento;
+    @Setter(AccessLevel.NONE)
+    private Long iddepoimento;
     @Column(columnDefinition = "TEXT") private String foto;
     @Column(columnDefinition = "TEXT") private String depoimento;
     private String nome;

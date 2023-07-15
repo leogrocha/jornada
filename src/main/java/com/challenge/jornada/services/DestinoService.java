@@ -1,6 +1,8 @@
 package com.challenge.jornada.services;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -30,10 +32,23 @@ public class DestinoService {
         return new DestinoDTO(destino);
     }
 
+    @Transactional(readOnly = true)
+    public Object searchByList(String nome) {
+
+        Map<String, String> respostaNenhumItemEncontrado = new HashMap<>();
+        respostaNenhumItemEncontrado.put("messagem", "Nenhum destino foi encontrado");
+
+        List<DestinoDTO> searchList = repository.searchByList(nome)
+                .stream().map(DestinoDTO::new).toList();
+        var retorno = searchList.size() > 0 ? searchList
+                : respostaNenhumItemEncontrado;
+        return retorno;
+    }
+
     @Transactional
     public DestinoDTO insert(DestinoDTO dto) {
         Destino destino = new Destino(dto);
-        repository.save(destino);
+        destino = repository.save(destino);
         return new DestinoDTO(destino);
     }
 
@@ -45,7 +60,7 @@ public class DestinoService {
         destino = repository.save(destino);
         return new DestinoDTO(destino);
     }
-    
+
     @Transactional
     public void delete(Long iddestino) {
         if (repository.existsById(iddestino)) {
@@ -60,9 +75,5 @@ public class DestinoService {
         entity.setNome(dto.nome());
         entity.setPreco(dto.preco());
     }
-    
 
-
-
-    
 }

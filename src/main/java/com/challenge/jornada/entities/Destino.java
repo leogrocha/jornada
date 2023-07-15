@@ -10,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,13 +30,13 @@ public class Destino {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
     private Long iddestino;
     @Column(columnDefinition = "TEXT") private String foto;
     private String nome;
     private BigDecimal preco;
 
     public Destino(DestinoDTO dto) {
+        iddestino = dto.iddestino();
         foto = dto.foto();
         nome = dto.nome();
         preco = dto.preco();

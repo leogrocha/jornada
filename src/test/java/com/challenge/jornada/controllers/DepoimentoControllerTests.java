@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import com.challenge.jornada.dto.DepoimentoDTO;
+import com.challenge.jornada.entities.Depoimento;
 import com.challenge.jornada.services.DepoimentoService;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -25,16 +26,22 @@ public class DepoimentoControllerTests {
     DepoimentoService depoimentoService;
 
     @Test
-    public void findByIdDeveRetornarDepoimentoDTOCasoIdExista() throws Exception{
+    public void findByIdDeveRetornarDepoimentoDTOCasoIdExista() throws Exception {
         Long iddepoimento = Long.valueOf(13);
 
-        DepoimentoDTO depoimentoDTO = new DepoimentoDTO(iddepoimento,"fotoTeste", "DepoimentoTeste", "nome de teste");
-        
-        
+        DepoimentoDTO depoimentoDTO = new DepoimentoDTO(iddepoimento, "fotoTeste", "DepoimentoTeste", "nome de teste");
+
         Mockito.when(depoimentoService.findById(iddepoimento)).thenReturn(depoimentoDTO);
         ResultActions result = mockMvc
                 .perform(get("/depoimentos/{iddepoimento}", iddepoimento).accept(MediaType.APPLICATION_JSON));
         result.andExpect(status().isOk());
+    }
+    
+    public void saveDeveSalvarObjectoERetornarCreated() throws Exception{
+        Depoimento depoimento = new Depoimento();
+        depoimento.setFoto("fotoTeste");
+        depoimento.setDepoimento("Depoimento de teste");
+        depoimento.setNome("nome de teste");
     }
     
 }

@@ -61,8 +61,10 @@ public class DepoimentoService {
 
     @Transactional
     public DepoimentoDTO update(Long iddepoimento, DepoimentoDTO depoimentoDTO) {
-        Depoimento depoimento = repository.findById(iddepoimento).orElseThrow(() -> new ControllerNotFoundException("Recurso não encontrado"));
-        copiarObjeto(depoimentoDTO, depoimento);
+        Depoimento depoimento = repository.findById(iddepoimento)
+                .orElseThrow(() -> new ControllerNotFoundException("Recurso não encontrado"));
+        depoimentoDTO.setIddepoimento(iddepoimento);
+        depoimento.atualizarInformacoes(depoimentoDTO);
         depoimento = repository.save(depoimento);
         return new DepoimentoDTO(depoimento);
     }
@@ -74,12 +76,6 @@ public class DepoimentoService {
         } else {
             throw new ControllerNotFoundException("Recurso não encontrado");
         }
-    }
-
-    public void copiarObjeto(DepoimentoDTO dto, Depoimento entity) {
-        entity.setFoto(dto.foto());
-        entity.setDepoimento(dto.depoimento());
-        entity.setNome(dto.nome());
     }
 
 }

@@ -31,18 +31,18 @@ public class Destino {
     
 
     public Destino(DestinoDTO dto) {
-        foto1 = dto.foto1();
-        foto2 = dto.foto2();
-        nome = dto.nome();
-        meta = dto.meta();
-        textoDescritivo = dto.textoDescritivo();
+        foto1 = dto.getFoto1();
+        foto2 = dto.getFoto2();
+        nome = dto.getNome();
+        meta = dto.getMeta();
+        textoDescritivo = dto.getTextoDescritivo();
     }
 
     public void atualizarInformacoes(DestinoDTO dados) {
-        this.foto1 = dados.foto1() != null ? dados.foto1() : getFoto1();
-        this.foto2 = dados.foto2() != null ? dados.foto2() : getFoto2();
-        this.nome = dados.nome() != null ? dados.nome() : getNome();
-        this.meta = dados.meta() != null ? dados.meta() : getMeta();
-        this.textoDescritivo = dados.textoDescritivo() != null ? dados.textoDescritivo() : getTextoDescritivo();
+        this.foto1 = dados.getFoto1() != null ? dados.getFoto1() : getFoto1();
+        this.foto2 = dados.getFoto2() != null ? dados.getFoto2() : getFoto2();
+        this.nome = dados.getNome() != null ? dados.getNome() : getNome();
+        this.meta = dados.getMeta() != null ? dados.getMeta() : getMeta();
+        this.textoDescritivo = dados.getTextoDescritivo() != null ? dados.getTextoDescritivo() : getTextoDescritivo();
     }
 }

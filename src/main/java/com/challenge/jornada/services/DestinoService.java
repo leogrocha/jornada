@@ -56,11 +56,10 @@ public class DestinoService {
     public DestinoDTO update(Long iddestino, DestinoDTO destinoDTO) {
         Destino destino = repository.findById(iddestino)
                 .orElseThrow(() -> new ControllerNotFoundException("Recurso não encontrado"));
+        destinoDTO.setIddestino(iddestino);
         destino.atualizarInformacoes(destinoDTO);
         
-        // TODO AJUSTAR DETALHE DE RETORNO DO IDDESTINO
         repository.save(destino);
-        System.out.println("DESTINO: " + destino);
                 
         return new DestinoDTO(destino);
     }

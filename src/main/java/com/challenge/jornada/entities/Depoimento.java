@@ -28,9 +28,14 @@ public class Depoimento {
     private String nome;
 
     public Depoimento(DepoimentoDTO dto) {
-        foto = dto.foto();
-        depoimento = dto.depoimento();
-        nome = dto.nome();
+        foto = dto.getFoto();
+        depoimento = dto.getDepoimento();
+        nome = dto.getNome();
     }
-
+    
+    public void atualizarInformacoes(DepoimentoDTO dados) {
+        foto = dados.getFoto() != null ? dados.getFoto() : getFoto();
+        depoimento = dados.getDepoimento() != null ? dados.getDepoimento() : getDepoimento();
+        nome = dados.getNome() != null ? dados.getNome() : getNome();
+    }
 }

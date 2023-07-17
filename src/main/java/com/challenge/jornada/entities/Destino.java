@@ -1,7 +1,5 @@
 package com.challenge.jornada.entities;
 
-import java.math.BigDecimal;
-
 import com.challenge.jornada.dto.DestinoDTO;
 
 import jakarta.persistence.Column;
@@ -10,35 +8,41 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 
 @Entity
 @Table(name = "tb_destino")
-@ToString
-@EqualsAndHashCode(of = { "iddestino" })
 @NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Destino {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long iddestino;
-    @Column(columnDefinition = "TEXT") private String foto;
+    @Column(columnDefinition = "TEXT") private String foto1;
+    @Column(columnDefinition = "TEXT") private String foto2;
     private String nome;
-    private BigDecimal preco;
+    @Column(columnDefinition = "VARCHAR(160)") private String meta;
+    private String textoDescritivo;
+    
 
     public Destino(DestinoDTO dto) {
-        iddestino = dto.iddestino();
-        foto = dto.foto();
+        foto1 = dto.foto1();
+        foto2 = dto.foto2();
         nome = dto.nome();
-        preco = dto.preco();
+        meta = dto.meta();
+        textoDescritivo = dto.textoDescritivo();
+    }
+
+    public void atualizarInformacoes(DestinoDTO dados) {
+        this.foto1 = dados.foto1() != null ? dados.foto1() : getFoto1();
+        this.foto2 = dados.foto2() != null ? dados.foto2() : getFoto2();
+        this.nome = dados.nome() != null ? dados.nome() : getNome();
+        this.meta = dados.meta() != null ? dados.meta() : getMeta();
+        this.textoDescritivo = dados.textoDescritivo() != null ? dados.textoDescritivo() : getTextoDescritivo();
     }
 }

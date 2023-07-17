@@ -33,16 +33,20 @@ public class DepoimentoService {
         return new DepoimentoDTO(depoimento);
     }
 
+    public Long retornaNumeroAleatorio() {
+        return new Random().nextLong(repository.count());
+    }
+
     @Transactional(readOnly = true)
     public Set<DepoimentoDTO> findRandom() {
-        List<DepoimentoDTO> listaDepoimentos = findAll();
-
         Set<DepoimentoDTO> depoimentosSorteados = new HashSet<>();
 
         final int maximoNumerosParaSeremSorteados = 3;
         while (depoimentosSorteados.size() < maximoNumerosParaSeremSorteados) {
-            int numberRandom = new Random().nextInt(listaDepoimentos.size());
-            depoimentosSorteados.add(listaDepoimentos.get(numberRandom));
+            Long numberRandom = retornaNumeroAleatorio();
+            if (repository.existsById(numberRandom)) {
+                depoimentosSorteados.add(findById(numberRandom));
+            }
         }
 
         return depoimentosSorteados;

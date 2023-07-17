@@ -29,6 +29,7 @@ public class DepoimentoServiceTests {
         Long iddepoimento = Long.valueOf(13);
 
         Depoimento depoimento = new Depoimento();
+        depoimento.setIddepoimento(iddepoimento);
         depoimento.setFoto("fotoTeste");
         depoimento.setDepoimento("Depoimento de teste");
         depoimento.setNome("nome de teste");

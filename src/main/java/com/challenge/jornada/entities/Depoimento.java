@@ -8,27 +8,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "tb_depoimentos")
-@ToString
-@EqualsAndHashCode(of = { "iddepoimento" })
+@Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Depoimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
+    @EqualsAndHashCode.Include
     private Long iddepoimento;
     @Column(columnDefinition = "TEXT") private String foto;
     @Column(columnDefinition = "TEXT") private String depoimento;

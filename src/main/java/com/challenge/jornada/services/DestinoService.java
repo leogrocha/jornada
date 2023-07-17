@@ -56,8 +56,12 @@ public class DestinoService {
     public DestinoDTO update(Long iddestino, DestinoDTO destinoDTO) {
         Destino destino = repository.findById(iddestino)
                 .orElseThrow(() -> new ControllerNotFoundException("Recurso não encontrado"));
-        copiarObjeto(destinoDTO, destino);
-        destino = repository.save(destino);
+        destino.atualizarInformacoes(destinoDTO);
+        
+        // TODO AJUSTAR DETALHE DE RETORNO DO IDDESTINO
+        repository.save(destino);
+        System.out.println("DESTINO: " + destino);
+                
         return new DestinoDTO(destino);
     }
 
@@ -69,11 +73,4 @@ public class DestinoService {
             throw new ControllerNotFoundException("Recurso não encontrado");
         }
     }
-
-    public void copiarObjeto(DestinoDTO dto, Destino entity) {
-        entity.setFoto(dto.foto());
-        entity.setNome(dto.nome());
-        entity.setPreco(dto.preco());
-    }
-
 }

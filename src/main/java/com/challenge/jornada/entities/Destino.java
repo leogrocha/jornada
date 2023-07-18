@@ -1,5 +1,7 @@
 package com.challenge.jornada.entities;
 
+import java.math.BigDecimal;
+
 import com.challenge.jornada.dto.DestinoDTO;
 
 import jakarta.persistence.Column;
@@ -28,6 +30,7 @@ public class Destino {
     private String nome;
     @Column(columnDefinition = "VARCHAR(160)") private String meta;
     private String textoDescritivo;
+    private BigDecimal preco;
     
 
     public Destino(DestinoDTO dto) {
@@ -36,6 +39,7 @@ public class Destino {
         nome = dto.getNome();
         meta = dto.getMeta();
         textoDescritivo = dto.getTextoDescritivo();
+        preco = dto.getPreco();
     }
 
     public void atualizarInformacoes(DestinoDTO dados) {
@@ -44,5 +48,6 @@ public class Destino {
         this.nome = dados.getNome() != null ? dados.getNome() : getNome();
         this.meta = dados.getMeta() != null ? dados.getMeta() : getMeta();
         this.textoDescritivo = dados.getTextoDescritivo() != null ? dados.getTextoDescritivo() : getTextoDescritivo();
+        this.preco = dados.getPreco() != null ? dados.getPreco() : getPreco();
     }
 }

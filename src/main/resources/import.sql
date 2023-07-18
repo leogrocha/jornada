@@ -13,6 +13,6 @@ insert into tb_depoimentos (foto, depoimento, nome) values ('foto12', 'Ladrão d
 insert into tb_depoimentos (foto, depoimento, nome) values ('foto13', '13', '13');
 
 
-insert into tb_destino (foto1, foto2, nome, meta, texto_descritivo) values ('foto1', 'foto2', 'Paris', 'Viajar', 'Texto Descritivo');
-insert into tb_destino (foto1, foto2, nome, meta) values ('foto1', 'foto2', 'Ribeirão Preto', 'meta');
+insert into tb_destino (foto1, foto2, nome, meta, texto_descritivo, preco) values ('foto1', 'foto2', 'Paris', 'Viajar', 'Texto Descritivo', 1000.00);
+insert into tb_destino (foto1, foto2, nome, meta, preco) values ('foto1', 'foto2', 'Ribeirão Preto', 'meta', 100.00);
 

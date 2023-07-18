@@ -1,7 +1,10 @@
 package com.challenge.jornada.dto;
 
+import java.math.BigDecimal;
+
 import com.challenge.jornada.entities.Destino;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -18,6 +21,8 @@ public class DestinoDTO {
     @NotBlank(message = "Nome é obrigatório e não pode ser nulo ou em branco") private String nome;
     @NotBlank(message = "Meta é obrigatório e não pode ser nulo ou em branco") private String meta;
     private String textoDescritivo;
+    @Positive
+    private BigDecimal preco;
 
         
     public DestinoDTO(Destino entity) {
@@ -27,6 +32,7 @@ public class DestinoDTO {
         nome = entity.getNome();
         meta = entity.getMeta();
         textoDescritivo = entity.getTextoDescritivo();
+        preco = entity.getPreco();
      }       
         
 

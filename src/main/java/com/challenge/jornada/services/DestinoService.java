@@ -38,7 +38,7 @@ public class DestinoService {
         Map<String, String> respostaNenhumItemEncontrado = new HashMap<>();
         respostaNenhumItemEncontrado.put("messagem", "Nenhum destino foi encontrado");
 
-        List<DestinoDTO> searchList = repository.searchByList(nome)
+        List<DestinoDTO> searchList = repository.findByNomeIlikDestinos(nome)
                 .stream().map(DestinoDTO::new).toList();
         var retorno = searchList.size() > 0 ? searchList
                 : respostaNenhumItemEncontrado;
